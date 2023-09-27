@@ -1,0 +1,21 @@
+name: Push to Another Repository
+
+on:
+  push:
+    branches:
+      - main  # Cambia "main" al nombre de la rama que deseas vigilar
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Push to Another Repository
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git remote add target_repo https://github.com/oscarfc164/prueba2  # Reemplaza con la URL del repositorio de destino
+        git push target_repo main  # Reemplaza "main" por la rama que deseas empujar en el repositorio de destino
